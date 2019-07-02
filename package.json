@@ -1,0 +1,35 @@
+{
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.0.6",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^4.35.2",
+    "webpack-cli": "^3.3.5",
+    "webpack-dev-server": "^3.7.2"
+  },
+  "name": "web-story",
+  "description": "my personal blog about web development stories",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --color --hot",
+    "build": "webpack --mode=production",
+    "dev": "webpack --mode=development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/52lzq/web-story.git"
+  },
+  "author": "52lzq",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/52lzq/web-story/issues"
+  },
+  "homepage": "https://github.com/52lzq/web-story#readme"
+}
