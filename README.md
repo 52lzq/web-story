@@ -1,2 +1,2 @@
 # web-story
-my personal blog about web development stories
+my personal blog about web app development stories
