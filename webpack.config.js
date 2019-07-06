@@ -92,7 +92,8 @@ const config = {
     new webpack.DllReferencePlugin({
       context: __dirname,
       // 之前打包出来的json文件
-      mainfest: path.resolve(__dirname, 'dist/manifest.json')
+      //mainfest: path.resolve(__dirname, 'dist/manifest.json')
+      manifest: require('./dist/react-manifest.json')
     })
   ]
 

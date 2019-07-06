@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "antd": "^3.20.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1"
@@ -25,7 +26,8 @@
   "scripts": {
     "start": "webpack-dev-server --color --hot",
     "build": "webpack --mode=production",
-    "dev": "webpack --mode=development"
+    "dev": "webpack --mode=development",
+    "dll": "webpack --mode=development --config webpack.dll.config.js"
   },
   "repository": {
     "type": "git",
