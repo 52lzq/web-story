@@ -4,7 +4,8 @@ const webpack = require('webpack')
 module.exports = {
   entry: {
     // 想统一打包的类库
-    react: ['react']
+    react: ['react'],
+    antd: ['antd']
   },
 
   output: {
@@ -22,8 +23,7 @@ module.exports = {
       name: '[name]-[hash]',
       // manifest文件中请求的上下文
       context: __dirname,
-      //path: path.resolve(__dirname, 'dist/manifest.json') 
-      path: path.join(__dirname, 'dist', '[name]-manifest.json')
+      path: path.resolve(__dirname, 'dist/[name]-manifest.json') 
     })
   ]
 }

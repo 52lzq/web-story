@@ -1,6 +1,7 @@
 // 用于处理文件路径和目录路径的实用工具
 const path = require('path');
 
+// 引入webpack
 const webpack = require('webpack')
 
 // 提供操作系统相关的实用方法
@@ -14,6 +15,9 @@ const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 
 // 指定loader需要处理的文件夹路径
 const devPath = path.resolve(__dirname, 'src')
+
+// 清除旧文件生成新文件
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const config = {
   // webpack 打包的入口文件，index所在目录路径
@@ -33,7 +37,8 @@ const config = {
     port: '8000',
   },
 
-  devtool: 'source-map', // 开启 sourceMap 方便调试
+  // 开启 sourceMap 方便调试
+  devtool: 'source-map', 
 
   // 当为production的时候,会默认开启minification,tree shaking，Scope Hoisting
   // minification 取代(UglifyJS | webpack-parallel-uglify-plugin)
@@ -74,6 +79,7 @@ const config = {
 
   // 放置插件
   plugins: [
+    new CleanWebpackPlugin(),
     // happypack实例
     new HappyPack({
       // 用id来标识 happypack处理哪类文件
@@ -92,8 +98,12 @@ const config = {
     new webpack.DllReferencePlugin({
       context: __dirname,
       // 之前打包出来的json文件
-      //mainfest: path.resolve(__dirname, 'dist/manifest.json')
       manifest: require('./dist/react-manifest.json')
+    }),
+
+    new webpack.DllReferencePlugin({
+      context: __dirname,
+      manifest: require('./dist/antd-manifest.json')
     })
   ]
 
