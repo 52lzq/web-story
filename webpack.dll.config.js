@@ -5,7 +5,7 @@ module.exports = {
   entry: {
     // 想统一打包的类库
     react: ['react'],
-    antd: ['antd']
+    // antd: ['antd']
   },
 
   output: {

@@ -10,6 +10,8 @@ const os = require('os');
 // 引入 happypack
 const HappyPack = require('happypack');
 
+const HtmlWebpackPlugin=require('html-webpack-plugin');
+
 // 设置共享进程池根据当前系统的cpus数量 防止占用资源
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 
@@ -80,6 +82,10 @@ const config = {
   // 放置插件
   plugins: [
     new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: 'src/template.index.ejs',
+      favicon: 'favicon.ico'
+    }),
     // happypack实例
     new HappyPack({
       // 用id来标识 happypack处理哪类文件
@@ -95,16 +101,16 @@ const config = {
     }),
 
     // DllReferencePlugin实例
-    new webpack.DllReferencePlugin({
-      context: __dirname,
-      // 之前打包出来的json文件
-      manifest: require('./dist/react-manifest.json')
-    }),
+    // new webpack.DllReferencePlugin({
+    //   context: __dirname,
+    //   // 之前打包出来的json文件
+    //   manifest: require('./dist/react-manifest.json')
+    // }),
 
-    new webpack.DllReferencePlugin({
-      context: __dirname,
-      manifest: require('./dist/antd-manifest.json')
-    })
+    // new webpack.DllReferencePlugin({
+    //   context: __dirname,
+    //   manifest: require('./dist/antd-manifest.json')
+    // })
   ]
 
 };
