@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
+import Home from './pages/home'
 
-const HelloWorld = () => <div>Hello World211 </div>
+const App = () => 
+  <div>
+    <Home/>
+  </div>
 
-ReactDom.render(<HelloWorld />, document.getElementById('app'));
+ReactDom.render(<App/>, document.getElementById('app'));
