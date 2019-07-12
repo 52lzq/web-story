@@ -23,7 +23,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const config = {
   // webpack 打包的入口文件，index所在目录路径
-  entry: path.resolve(__dirname,'src/entry'), 
+  entry: path.resolve(__dirname,'src'), 
   // webpack 打包的输出文件
   output: { 
     filename: 'index.js',
