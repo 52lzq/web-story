@@ -63,7 +63,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default Home => {
+const Home = () => {
   const classes = useStyles();
 
   return (
@@ -99,3 +99,5 @@ export default Home => {
     </div>
   );
 }
+
+export default Home
