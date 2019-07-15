@@ -9,12 +9,19 @@ import {
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
-import Header from '../../components/Header/index'
+import {
+  Body,
+  Header
+} from '../../components'
 
 const Home = () => {
   return (
     <div>
-      <Header/>
+      <div style={{marginBottom: '30px'}}>
+        <Header />
+      </div>
+      
+      <Body/>
     </div>
   );
 }
