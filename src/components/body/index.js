@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Card from './card';
-import Name from './name'
+import MarkDown from './markDown'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,9 +24,9 @@ const Body = () => {
           Paper can be used to build surface or other elements for your application.
         </Typography>
         <Card/>
-        
+        <MarkDown/>
       </Paper>
-      <Name/>
+      
     </div>
   );
 }

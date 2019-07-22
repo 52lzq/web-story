@@ -57,7 +57,7 @@ const config = {
         test: /\.(js|jsx)$/,
         // loader名称
         // 补充 此处添加了happyPack实例调用多线程来减少打包时间
-        use: 'happypack/loader?id=happyBabel',
+        use: 'happypack/loader?id=happy-babel-loader',
         // 手动屏蔽的文件夹
         exclude: /node_modules/,
         // 手动指定包含的文件夹
@@ -88,11 +88,25 @@ const config = {
     }),
     // happypack实例
     new HappyPack({
-      // 用id来标识 happypack处理哪类文件
-      id: 'happyBabel',
+      // 用id来标识对应的happypack
+      id: 'happy-babel-loader',
       loaders: [{
-        // 相当于将babel-loader包裹
-        loader: 'babel-loader?cacheDirectory=true',
+        //将babel-loader包裹
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env','@babel/preset-react'],
+          plugins: [
+            ["@babel/plugin-proposal-object-rest-spread"],
+            [
+              "import",
+              {
+                "libraryName": "@material-ui/core",
+                "libraryDirectory": "",
+                "camel2DashComponentName": false,
+              }
+            ]
+          ]
+        }
       }],
       // 共享进程池
       threadPool: happyThreadPool,
