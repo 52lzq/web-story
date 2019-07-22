@@ -1,3 +1,0 @@
-{
-  "presets": ["env", "react"] // 对 ES6 和 React 语法进行解析
-}

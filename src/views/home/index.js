@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <div>
       <div style={{marginBottom: '30px'}}>
-        <Header />
+        {/* <Header /> */}
       </div>
       
       <Body/>
