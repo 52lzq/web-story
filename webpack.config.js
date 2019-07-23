@@ -22,6 +22,14 @@ const devPath = path.resolve(__dirname, "src");
 // const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const config = {
+  // 配置绝对路径
+  resolve: {
+    alias: {
+      "@": devPath
+    }
+  },
+
+  // 隐藏build后文件大小提醒
   performance: {
     hints: false
   },

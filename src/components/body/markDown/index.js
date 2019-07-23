@@ -20,7 +20,7 @@ import {
 import SearchIcon from "@material-ui/icons/Search";
 import Markdown from "./Markdown";
 import post1 from "./blog-post.1.md";
-// import post2 from './blog-post.2.md';
+import post2 from "@/assets/webpack.md";
 // import post3 from './blog-post.3.md';
 
 function MadeWithLove() {
@@ -134,7 +134,7 @@ const featuredPosts = [
   }
 ];
 
-const posts = [post1];
+const posts = [post1, post2];
 
 const archives = [
   "March 2020",
