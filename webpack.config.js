@@ -10,7 +10,7 @@ const os = require('os');
 // 引入 happypack
 const HappyPack = require('happypack');
 
-const HtmlWebpackPlugin=require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // 设置共享进程池根据当前系统的cpus数量 防止占用资源
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
@@ -22,10 +22,13 @@ const devPath = path.resolve(__dirname, 'src')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const config = {
+  performance: {
+    hints: false
+  },
   // webpack 打包的入口文件，index所在目录路径
-  entry: path.resolve(__dirname,'src'), 
+  entry: path.resolve(__dirname, 'src'),
   // webpack 打包的输出文件
-  output: { 
+  output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
     //在上线时配置的是CDN的地址
@@ -34,22 +37,22 @@ const config = {
 
   // webpack dev server提供简单的web服务器和实时热更新的能力
   // 热更新如果在此处配置需要添加额外的插件
-  devServer: { 
+  devServer: {
     host: 'localhost',
     port: '8000',
   },
 
   // 开启 sourceMap 方便调试
-  devtool: 'source-map', 
+  devtool: 'source-map',
 
   // 当为production的时候,会默认开启minification,tree shaking，Scope Hoisting
   // minification 取代(UglifyJS | webpack-parallel-uglify-plugin)
   // tree shaking 删除未被引用的代码
   // Scope Hoisting 分析模块之间的依赖关系，尽可能将模块合并到一个函数中
-  mode: 'development', 
-  
+  mode: 'development',
+
   // 放置loader
-  module: { 
+  module: {
     rules: [
       // 处理非标准 js 语法的 loader
       {
@@ -66,22 +69,31 @@ const config = {
       //使用不同的两个插件可以将css转成JS文件类型
       {
         test: /\.css/,
-        use: ['css-loader','style-loader'],
+        use: ['css-loader', 'style-loader'],
         exclude: /node_modules/,
         include: devPath,
+        sideEffects: true
       },
       {
         test: /\.less/,
         use: ['style-loader', 'css-loader', 'less-loader'],
         exclude: /node_modules/,
-        include: devPath
+        include: devPath,
+        sideEffects: true
       },
+      // 加载文件原始内容（utf-8)
+      {
+        test: /\.md$/,
+        use: 'raw-loader',
+        exclude: /node_modules/,
+        include: devPath
+      }
     ],
   },
 
   // 放置插件
   plugins: [
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: 'src/template.index.ejs',
       favicon: 'favicon.ico'
@@ -94,17 +106,19 @@ const config = {
         //将babel-loader包裹
         loader: 'babel-loader',
         options: {
-          presets: ['@babel/preset-env','@babel/preset-react'],
-          plugins: [
-            ["@babel/plugin-proposal-object-rest-spread"],
-            [
-              "import",
+          presets: [
+            ["@babel/preset-env",
               {
-                "libraryName": "@material-ui/core",
-                "libraryDirectory": "",
-                "camel2DashComponentName": false,
+                'modules': false,
+                'targets': {
+                  "browsers": ["last 2 versions", "safari >= 7", "ie >= 9", "chrome >= 52"]
+                },
               }
-            ]
+            ],
+            ['@babel/preset-react']
+          ],
+          plugins: [
+            ["@babel/plugin-proposal-object-rest-spread"]
           ]
         }
       }],
@@ -115,16 +129,16 @@ const config = {
     }),
 
     // DllReferencePlugin实例
-    // new webpack.DllReferencePlugin({
-    //   context: __dirname,
-    //   // 之前打包出来的json文件
-    //   manifest: require('./dist/react-manifest.json')
-    // }),
+    new webpack.DllReferencePlugin({
+      context: path.resolve(__dirname, 'dist'),
+      // 之前打包出来的json文件
+      manifest: require('./dist/react-manifest.json')
+    }),
 
-    // new webpack.DllReferencePlugin({
-    //   context: __dirname,
-    //   manifest: require('./dist/antd-manifest.json')
-    // })
+    new webpack.DllReferencePlugin({
+      context: path.resolve(__dirname, 'dist'),
+      manifest: require('./dist/material-manifest.json')
+    })
   ]
 
 };

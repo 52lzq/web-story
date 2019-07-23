@@ -2,7 +2,6 @@
   "dependencies": {
     "@material-ui/core": "^4.2.0",
     "@material-ui/icons": "^4.2.1",
-    "antd": "^3.20.0",
     "markdown-to-jsx": "^6.10.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -13,7 +12,6 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
-    "@babel/runtime": "^7.5.5",
     "babel-loader": "^8.0.6",
     "babel-plugin-import": "^1.12.0",
     "clean-webpack-plugin": "^3.0.0",
@@ -22,6 +20,7 @@
     "html-webpack-plugin": "^3.2.0",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
+    "raw-loader": "^3.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.36.1",
     "webpack-cli": "^3.3.5",
@@ -34,6 +33,7 @@
     "dll": "webpack --mode=development --config webpack.dll.config.js"
   },
   "name": "web-story",
+  "sideEffects": false,
   "description": "my personal blog about web development stories",
   "version": "1.0.0",
   "main": "index.js",

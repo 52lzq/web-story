@@ -1,25 +1,27 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
+import { 
+  CssBaseline,
+  Toolbar,
+  IconButton,
+  Paper,
+  Typography,
+  Grid,
+  Card,
+  CardActionArea,
+  CardContent,
+  Hidden,
+  Link,
+  Button,
+  Divider,
+  Container,
+  CardMedia
+ } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Hidden from '@material-ui/core/Hidden';
-import Link from '@material-ui/core/Link';
-import Button from '@material-ui/core/Button';
-import Divider from '@material-ui/core/Divider';
-import Container from '@material-ui/core/Container';
-// import Markdown from './Markdown';
-// import post1 from './blog-post.1.md';
-// import post2 from './blog-post.1.md';
-// import post3 from './blog-post.1.md';
+import Markdown from './Markdown';
+import post1 from './blog-post.1.md';
+// import post2 from './blog-post.2.md';
+// import post3 from './blog-post.3.md';
 
 function MadeWithLove() {
   return (
@@ -86,10 +88,10 @@ const useStyles = makeStyles(theme => ({
   cardMedia: {
     width: 160,
   },
-  // markdown: {
-  //   ...theme.typography.body2,
-  //   padding: theme.spacing(3, 0),
-  // },
+  markdown: {
+    ...theme.typography.body2,
+    padding: theme.spacing(3, 0),
+  },
   sidebarAboutBox: {
     padding: theme.spacing(2),
     backgroundColor: theme.palette.grey[200],
@@ -132,7 +134,7 @@ const featuredPosts = [
   },
 ];
 
-// const posts = [post1];
+const posts = [post1];
 
 const archives = [
   'March 2020',
@@ -151,7 +153,7 @@ const archives = [
 
 const social = ['GitHub', 'Twitter', 'Facebook'];
 
-export default () => {
+export default function Blog() {
   const classes = useStyles();
 
   return (
@@ -263,11 +265,11 @@ export default () => {
                 From the Firehose
               </Typography>
               <Divider />
-              {/* {posts.map(post => (
+              {posts.map(post => (
                 <Markdown className={classes.markdown} key={post.substring(0, 40)}>
                   {post}
                 </Markdown>
-              ))} */}
+              ))}
             </Grid>
             {/* End main content */}
             {/* Sidebar */}

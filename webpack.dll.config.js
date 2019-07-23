@@ -2,10 +2,11 @@ const path = require('path')
 const webpack = require('webpack')
 
 module.exports = {
+  name: 'vendor',
   entry: {
     // 想统一打包的类库
     react: ['react'],
-    // antd: ['antd']
+    material: ['@material-ui/core']
   },
 
   output: {
