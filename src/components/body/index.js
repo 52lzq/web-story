@@ -1,14 +1,14 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Card from './card';
-import MarkDown from './markDown'
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Typography from "@material-ui/core/Typography";
+import Card from "./card";
+import MarkDown from "./markDown";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    padding: theme.spacing(3, 2),
-  },
+    padding: theme.spacing(3, 2)
+  }
 }));
 
 const Body = () => {
@@ -21,14 +21,14 @@ const Body = () => {
           This is a sheet of paper.
         </Typography>
         <Typography component="p">
-          Paper can be used to build surface or other elements for your application.
+          Paper can be used to build surface or other elements for your
+          application.
         </Typography>
-        <Card/>
-        <MarkDown/>
+        <Card />
+        <MarkDown />
       </Paper>
-      
     </div>
   );
-}
+};
 
-export default Body
+export default Body;
