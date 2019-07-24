@@ -1,5 +1,6 @@
 import React from "react";
-import { Body, Header } from "../../components";
+import { Header, Paper } from "@/components";
+import Body from "./body";
 
 const Home = () => {
   return (
@@ -8,6 +9,7 @@ const Home = () => {
         <Header />
       </div>
       <Body />
+      <Paper />
     </div>
   );
 };

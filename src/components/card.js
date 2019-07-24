@@ -65,7 +65,8 @@ export default () => {
       />
       <CardMedia
         className={classes.media}
-        image="/static/images/cards/paella.jpg"
+        image={require("@/static/images/paella.jpg")}
+        alt="22"
         title="Paella dish"
       />
       <CardContent>

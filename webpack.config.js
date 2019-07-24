@@ -28,8 +28,7 @@ const config = {
       "@": devPath
     }
   },
-
-  // 隐藏build后文件大小提醒
+  // 隐藏build后文件大小性能提醒
   performance: {
     hints: false
   },
@@ -76,14 +75,14 @@ const config = {
       },
       //使用不同的两个插件可以将css转成JS文件类型
       {
-        test: /\.css/,
+        test: /\.css$/,
         use: ["css-loader", "style-loader"],
         exclude: /node_modules/,
         include: devPath,
         sideEffects: true
       },
       {
-        test: /\.less/,
+        test: /\.less$/,
         use: ["style-loader", "css-loader", "less-loader"],
         exclude: /node_modules/,
         include: devPath,
@@ -95,6 +94,18 @@ const config = {
         use: "raw-loader",
         exclude: /node_modules/,
         include: devPath
+      },
+      // 加载图片格式文件
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8192
+            }
+          }
+        ]
       }
     ]
   },
@@ -115,6 +126,7 @@ const config = {
           //将babel-loader包裹
           loader: "babel-loader",
           options: {
+            cacheDirectory: true,
             presets: [
               [
                 "@babel/preset-env",
