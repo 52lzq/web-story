@@ -9,7 +9,7 @@ const Home = () => {
         <Header />
       </div>
       <Body />
-      <Paper />
+      {/* <Paper /> */}
     </div>
   );
 };
