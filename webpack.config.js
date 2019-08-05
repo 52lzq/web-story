@@ -24,16 +24,16 @@ const devPath = path.resolve(__dirname, "src");
 const config = {
   // 配置绝对路径
   resolve: {
-    alias: {
-      "@": devPath
-    }
+    extensions: [".ts", ".tsx", ".js", ".json"],
+    // 在模块中添加 src, 当你导入文件时，可以将 src 作为相关路径
+    modules: ["src", "node_modules"]
   },
   // 隐藏build后文件大小性能提醒
   performance: {
     hints: false
   },
   // webpack 打包的入口文件，index所在目录路径
-  entry: path.resolve(__dirname, "src"),
+  entry: path.resolve(__dirname, "src/index.tsx"),
   // webpack 打包的输出文件
   output: {
     filename: "index.js",
@@ -61,18 +61,25 @@ const config = {
   // 放置loader
   module: {
     rules: [
-      // 处理非标准 js 语法的 loader
       {
-        // 匹配处理文件的扩展名的正则表达式
-        test: /\.(js|jsx)$/,
-        // loader名称
-        // 补充 此处添加了happyPack实例调用多线程来减少打包时间
-        use: "happypack/loader?id=happy-babel-loader",
-        // 手动屏蔽的文件夹
-        exclude: /node_modules/,
-        // 手动指定包含的文件夹
-        include: devPath
+        test: /\.tsx?$/,
+        use: ["happypack/loader?id=happy-babel-loader", "ts-loader"],
+        include: devPath,
+        exclude: /node_modules/
       },
+      // { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
+      // 处理非标准 js 语法的 loader
+      // {
+      //   // 匹配处理文件的扩展名的正则表达式
+      //   test: /\.(js|jsx)$/,
+      //   // loader名称
+      //   // 补充 此处添加了happyPack实例调用多线程来减少打包时间
+      //   use: "happypack/loader?id=happy-babel-loader",
+      //   // 手动屏蔽的文件夹
+      //   exclude: /node_modules/,
+      //   // 手动指定包含的文件夹
+      //   include: devPath
+      // },
       //使用不同的两个插件可以将css转成JS文件类型
       {
         test: /\.css$/,
