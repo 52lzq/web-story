@@ -1,5 +1,4 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import {
   CssBaseline,
   Toolbar,
@@ -17,11 +16,11 @@ import {
   Container,
   CardMedia
 } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 import SearchIcon from "@material-ui/icons/Search";
-import Markdown from "./Markdown";
-import post1 from "./blog-post.1.md";
+import { Markdown } from "@/components";
+import post1 from "@/assets/blog-post.1.md";
 import post2 from "@/assets/webpack.md";
-// import post3 from './blog-post.3.md';
 
 function MadeWithLove() {
   return (
