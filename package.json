@@ -2,38 +2,57 @@
   "dependencies": {
     "@material-ui/core": "^4.2.0",
     "@material-ui/icons": "^4.2.1",
-    "antd": "^3.20.0",
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.5",
+    "immutable": "^4.0.0-rc.12",
     "markdown-to-jsx": "^6.10.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.0.6",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.0.0",
     "happypack": "^5.0.1",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^3.0.1",
     "less": "^3.9.0",
     "less-loader": "^5.0.0",
+    "prettier": "1.18.2",
+    "pretty-quick": "^1.11.1",
+    "raw-loader": "^3.1.0",
+    "source-map-loader": "^0.2.4",
     "style-loader": "^0.23.1",
-    "webpack": "^4.35.2",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3",
+    "url-loader": "^2.1.0",
+    "webpack": "^4.36.1",
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.7.2"
   },
-  "name": "web-story",
-  "description": "my personal blog about web development stories",
-  "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --color --hot",
     "build": "webpack --mode=production",
     "dev": "webpack --mode=development",
     "dll": "webpack --mode=development --config webpack.dll.config.js"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
+  "name": "web-story",
+  "sideEffects": false,
+  "description": "my personal blog about web development stories",
+  "version": "1.0.0",
+  "main": "dist/index",
+  "typings": "dist/index",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/52lzq/web-story.git"

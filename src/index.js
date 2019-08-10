@@ -1,10 +1,13 @@
-import React, { Component } from 'react';
-import ReactDom from 'react-dom';
-import Home from './views/home'
+import React, { Component } from "react";
+import ReactDom from "react-dom";
+import Home from "./views";
 
-const App = () => 
-  <div>
-    <Home/>
-  </div>
+const App = () => {
+  return (
+    <div>
+      <Home />
+    </div>
+  );
+};
 
-ReactDom.render(<App/>, document.getElementById('app'));
+ReactDom.render(<App />, document.getElementById("app"));
